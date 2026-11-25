@@ -1,0 +1,62 @@
+TaskTimer - exploration du 25.11.2026
+Version de depart : da87f4c
+Les heures dans les reponses JSON sont en UTC.
+
+MongoDB 8.2.6
+MongoDB: mongodb://127.0.0.1:51568/tasktimer_test
+[MongoDB] connected
+[TaskTimer BUG] API http://localhost:3000
+
+  VITE v5.4.21  ready in 386 ms
+
+  ➜  Local:   http://127.0.0.1:5174/
+GET /api/tasks 200 6.671 ms - 2
+{"method":"GET","url":"http://127.0.0.1:3000/api/tasks","status":200,"body":[]}
+GET /api/tasks 200 1.477 ms - 2
+Chrome 157.0.8103.79
+Frontend HTTP 200
+UI style: {"label":"Create task","color":"rgb(46, 204, 113)","font":"\"Times New Roman\", serif","size":"12px"}
+{"method":"POST","url":"http://127.0.0.1:3000/api/tasks","data":{"title":"Tache de reference","priority":"medium","description":"Donnees de test"},"status":500,"body":{"error":"create failed"}}
+POST /api/tasks 500 7.234 ms - 25
+{"method":"GET","url":"http://127.0.0.1:3000/api/tasks","status":200,"body":[]}
+GET /api/tasks 200 1.279 ms - 2
+{"method":"POST","url":"http://127.0.0.1:3000/api/tasks","data":{"title":"Tache de reference","priority":2,"description":"Donnees de test"},"status":201,"body":{"title":"Tache de reference","description":"Donnees de test","priority":2,"_id":"6b06c190331cd00f04a943ec","createdAt":"2026-11-25T11:08:00.841Z","updatedAt":"2026-11-25T11:08:00.841Z","__v":0}}
+POST /api/tasks 201 3.663 ms - 194
+{"method":"GET","url":"http://127.0.0.1:3000/api/tasks","status":200,"body":[{"_id":"6b06c190331cd00f04a943ec","title":"Tache de reference","description":"Donnees de test","priority":2,"createdAt":"2026-11-25T11:08:00.841Z","updatedAt":"2026-11-25T11:08:00.841Z","__v":0}]}
+GET /api/tasks 200 1.570 ms - 196
+P-01: aucune requete /api au rechargement; No tasks yet. visible
+GET /api/tasks 200 1.442 ms - 196
+{"button":"Create task","method":"GET","path":"/api/tasks","status":200,"data":null,"body":"[{\"_id\":\"6b06c190331cd00f04a943ec\",\"title\":\"Tache de reference\",\"description\":\"Donnees de test\",\"priority\":2,\"createdAt\":\"2026-11-25T11:08:00.841Z\",\"updatedAt\":\"2026-11-25T11:08:00.841Z\",\"__v\":0}]"}
+POST /api/tasks 500 1.618 ms - 25
+{"button":"Create","method":"POST","path":"/api/tasks","status":500,"data":"{\"title\":\"\",\"priority\":\"medium\",\"description\":\"\"}","body":"{\"error\":\"create failed\"}"}
+{"method":"GET","url":"http://127.0.0.1:3000/api/tasks","status":200,"body":[{"_id":"6b06c190331cd00f04a943ec","title":"Tache de reference","description":"Donnees de test","priority":2,"createdAt":"2026-11-25T11:08:00.841Z","updatedAt":"2026-11-25T11:08:00.841Z","__v":0}]}
+P-02: ligne sans titre visible; aucun message; la liste API contient une seule tache
+GET /api/tasks 200 2.239 ms - 196
+POST /api/tasks 500 0.810 ms - 25
+{"button":"Create","method":"POST","path":"/api/tasks","status":500,"data":"{\"title\":\"Preparer le rapport\",\"priority\":\"medium\",\"description\":\"\"}","body":"{\"error\":\"create failed\"}"}
+{"method":"GET","url":"http://127.0.0.1:3000/api/tasks","status":200,"body":[{"_id":"6b06c190331cd00f04a943ec","title":"Tache de reference","description":"Donnees de test","priority":2,"createdAt":"2026-11-25T11:08:00.841Z","updatedAt":"2026-11-25T11:08:00.841Z","__v":0}]}
+P-03: Preparer le rapport visible; aucun message; la liste API contient une seule tache
+GET /api/tasks 200 1.359 ms - 196
+PUT /api/tasks/2 400 0.506 ms - 27
+{"button":"Save","method":"PUT","path":"/api/tasks/2","status":400,"data":"{\"title\":\"Titre modifie\",\"priority\":\"high\",\"description\":\"Donnees de test\"}","body":"{\"error\":\"invalid task id\"}"}
+{"method":"GET","url":"http://127.0.0.1:3000/api/tasks","status":200,"body":[{"_id":"6b06c190331cd00f04a943ec","title":"Tache de reference","description":"Donnees de test","priority":2,"createdAt":"2026-11-25T11:08:00.841Z","updatedAt":"2026-11-25T11:08:00.841Z","__v":0}]}
+B-04: Titre modifie visible apres la reponse 400
+GET /api/tasks 200 1.433 ms - 196
+GET /api/tasks/6b06c190331cd00f04a943ec 200 2.140 ms - 194
+{"button":"Delete","method":"GET","path":"/api/tasks/6b06c190331cd00f04a943ec","status":200}
+B-05: la ligne disparait au clic sur Delete
+{"method":"GET","url":"http://127.0.0.1:3000/api/tasks","status":200,"body":[{"_id":"6b06c190331cd00f04a943ec","title":"Tache de reference","description":"Donnees de test","priority":2,"createdAt":"2026-11-25T11:08:00.841Z","updatedAt":"2026-11-25T11:08:00.841Z","__v":0}]}
+GET /api/tasks 200 1.744 ms - 196
+GET /api/tasks 304 1.706 ms - -
+{"button":"Create task","method":"GET","path":"/api/tasks","status":200,"data":null,"body":"[{\"_id\":\"6b06c190331cd00f04a943ec\",\"title\":\"Tache de reference\",\"description\":\"Donnees de test\",\"priority\":2,\"createdAt\":\"2026-11-25T11:08:00.841Z\",\"updatedAt\":\"2026-11-25T11:08:00.841Z\",\"__v\":0}]"}
+{"method":"PUT","url":"http://127.0.0.1:3000/api/tasks/6b06c190331cd00f04a943ec","data":{"title":"Titre modifie par API","priority":3},"status":200,"body":{"_id":"6b06c190331cd00f04a943ec","title":"Titre modifie par API","description":"Donnees de test","priority":3,"createdAt":"2026-11-25T11:08:02.104Z","updatedAt":"2026-11-25T11:08:00.841Z","__v":0}}
+PUT /api/tasks/6b06c190331cd00f04a943ec 200 4.911 ms - 197
+{"method":"DELETE","url":"http://127.0.0.1:3000/api/tasks/6b06c190331cd00f04a943ec","status":204,"body":null}
+DELETE /api/tasks/6b06c190331cd00f04a943ec 204 3.069 ms - -
+{"method":"GET","url":"http://127.0.0.1:3000/api/tasks","status":200,"body":[]}
+GET /api/tasks 200 1.977 ms - 2
+{"method":"POST","url":"http://127.0.0.1:3000/api/tasks","data":{"title":"","priority":2},"status":201,"body":{"title":"","description":"","priority":2,"_id":"6b06c192331cd00f04a943fb","createdAt":"2026-11-25T11:08:02.118Z","updatedAt":"2026-11-25T11:08:02.118Z","__v":0}}
+POST /api/tasks 201 3.128 ms - 161
+{"method":"GET","url":"http://127.0.0.1:3000/api/tasks","status":200,"body":[{"_id":"6b06c192331cd00f04a943fb","title":"","description":"","priority":2,"createdAt":"2026-11-25T11:08:02.118Z","updatedAt":"2026-11-25T11:08:02.118Z","__v":0}]}
+Exploration terminee
+GET /api/tasks 200 2.144 ms - 163
