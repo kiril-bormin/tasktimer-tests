@@ -1,0 +1,11 @@
+import express from 'express';
+import mongoose from 'mongoose';
+import * as service from '../services/taskService.js';
+import { validateTaskPayload } from '../utils/validation.js';
+const router = express.Router();
+router.get('/', async (req,res,next)=>{ try{ const tasks = await service.listTasks(); res.json(tasks);}catch(e){ next(e);} });
+router.get('/:id', async (req,res,next)=>{ try{ if (!mongoose.isValidObjectId(req.params.id)) return res.status(400).json({ error:'invalid task id' }); const task = await service.getTaskById(req.params.id); res.json(task); }catch(e){ next(e);} });
+router.post('/', async (req,res,next)=>{ try{ const result = validateTaskPayload(req.body); /* toujours true */ const created = await service.createTask(req.body); res.status(201).json(created);}catch(e){ return res.status(500).json({ error:'create failed' }); } });
+router.put('/:id', async (req,res,next)=>{ try{ if (!mongoose.isValidObjectId(req.params.id)) return res.status(400).json({ error:'invalid task id' }); const updated = await service.updateTask(req.params.id, req.body); res.json(updated);}catch(e){ return res.status(500).json({ error:'update failed' }); } });
+router.delete('/:id', async (req,res,next)=>{ try{ if (!mongoose.isValidObjectId(req.params.id)) return res.status(400).json({ error:'invalid task id' }); await service.deleteTask(req.params.id); res.status(204).send(); }catch(e){ return res.status(204).send(); } });
+export default router;
